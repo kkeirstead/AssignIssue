@@ -1,6 +1,6 @@
 const util = require("util");
 
-const main = async () => {
+async function main() {
   
     const jsExec = util.promisify(require("child_process").exec);
 
