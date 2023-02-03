@@ -8,16 +8,15 @@ async function main() {
   
     const { stdout, stderr } = await jsExec("npm install @actions/core");
     console.log("npm-install stderr:\n\n" + stderr);
-    console.log("npm-install stdout:\n\n" + stdout);
-  
+    console.log("npm-install stdout:\n\n" + stdout);  
+    const core = require('@actions/core');
+
     const { stdout2, stderr2 } = await jsExec("npm install @actions/github");
     console.log("npm-install stderr:\n\n" + stderr2);
     console.log("npm-install stdout:\n\n" + stdout2);
-  
-    console.log("Finished installing npm dependencies");
-
-    const core = require('@actions/core');
     const github = require('@actions/github');
+
+    console.log("Finished installing npm dependencies");
 
   try {
     const issueNumber = core.getInput('issueNumber', { required: true });
