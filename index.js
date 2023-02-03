@@ -6,7 +6,7 @@ const main = async () => {
     const issueNumber = core.getInput('issueNumber', { required: true });
     const assignees = core.getInput('assignee', { required: true });
 
-    const token = core.getInput('GITHUB_TOKEN', { required: true })
+    const token = core.getInput('githubToken', { required: true })
     const octokit = github.getOctokit(token)
     
     const { context } = github
