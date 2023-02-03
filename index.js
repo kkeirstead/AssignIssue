@@ -3,16 +3,20 @@ const main = async () => {
     const jsExec = util.promisify(require("child_process").exec);
 
     console.log("Installing npm dependencies");
+  
     const { stdout, stderr } = await jsExec("npm install @actions/core");
-    const { stdout, stderr } = await jsExec("npm install @actions/github");
     console.log("npm-install stderr:\n\n" + stderr);
     console.log("npm-install stdout:\n\n" + stdout);
+  
+    const { stdout2, stderr2 } = await jsExec("npm install @actions/github");
+    console.log("npm-install stderr:\n\n" + stderr2);
+    console.log("npm-install stdout:\n\n" + stdout2);
+  
     console.log("Finished installing npm dependencies");
 
     const core = require('@actions/core');
     const github = require('@actions/github');
 
-  
   try {
     const issueNumber = core.getInput('issueNumber', { required: true });
     const assignees = core.getInput('assignee', { required: true });
